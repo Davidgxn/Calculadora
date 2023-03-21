@@ -54,9 +54,43 @@ for (let i = 0; i < botones.length; i++) {
             case "resultado":
                 calcularResultado();
                 break;
+            case "coma":
+                contenerPunto();
+                break;
         }
     });
 }
+
+function contenerPunto() {
+    // Esta funcion comprueba si es posible poner el punto y en caso de que si sea posible lo pone.
+    // En los primeros if else comprueba si hay un punto en el ultimo numero insertado entre un signo de puntuacion y 
+    if (output.innerHTML.includes("+")) {
+        let cadena = output.innerHTML.split("+");
+        if (!cadena[cadena.length - 1].includes(".")) {
+            output.innerHTML += ".";
+        }
+    } else if (output.innerHTML.includes("-")) {
+        let cadena = output.innerHTML.split("-");
+        if (!cadena[cadena.length - 1].includes(".")) {
+            output.innerHTML += ".";
+        }
+    } else if (output.innerHTML.includes("/")) {
+        let cadena = output.innerHTML.split("/");
+        if (!cadena[cadena.length - 1].includes(".")) {
+            output.innerHTML += ".";
+        }
+    } else if (output.innerHTML.includes("×")) {
+        let cadena = output.innerHTML.split("×");
+        if (!cadena[cadena.length - 1].includes(".")) {
+            output.innerHTML += ".";
+        }
+    } else {
+        if (!output.innerHTML.includes(".")) {
+            output.innerHTML += ".";
+        }
+    }
+}
+
 function comprobarPosible(signo) {
     // Lo que hace esta funcion es comprobar si se puede poner el signo en el output
     if (signo === "-") {
@@ -100,7 +134,7 @@ function calcularResultado() {
         operandos = operacion.split("+");
         resultado = 0;
         for (let i = 0; i<operandos.length; i++) {
-            resultado += parseInt(operandos[i]);
+            resultado += parseFloat(operandos[i]);
         }
         console.log(resultado);
         output.innerHTML = resultado;
@@ -109,7 +143,7 @@ function calcularResultado() {
         operandos = operacion.split("-");
         resultado = operandos[0];
         for (let i = 1; i<operandos.length; i++) {
-            resultado -= parseInt(operandos[i]);
+            resultado -= parseFloat(operandos[i]);
         }
         console.log(resultado);
         output.innerHTML = resultado;
@@ -118,7 +152,7 @@ function calcularResultado() {
         operandos = operacion.split("×");
         resultado = 1;
         for (let i = 0; i<operandos.length; i++) {
-            resultado *= parseInt(operandos[i]);
+            resultado *= parseFloat(operandos[i]);
         }
         console.log(resultado);
         output.innerHTML = resultado;
@@ -127,7 +161,7 @@ function calcularResultado() {
         operandos = operacion.split("/");
         resultado = operandos[0];
         for (let i = 1; i<operandos.length; i++) {
-            resultado /= parseInt(operandos[i]);
+            resultado /= parseFloat(operandos[i]);
         }
         console.log(resultado);
         output.innerHTML = resultado;
