@@ -11,7 +11,7 @@ body{
 }
 
 .calculadora_output{
-    padding: 25px 50px;
+    margin-right: 50px;
     color: #fff;
     font-size: 3em;
     text-align: end;
@@ -21,6 +21,7 @@ body{
     background: #1a1a1a;
     width: min-content;
     border-radius: 5%;
+    max-width: 420px;
 }
 
 .calculadora_botones{
@@ -42,4 +43,26 @@ body{
     margin: 15px;
     border-radius: 100%;
     font-size: 2em;
+}
+
+.calculadora_operando{
+    color: #ffffff91;
+    text-align: end;
+    margin-right: 55px;
+    min-height: 20px;
+}
+
+.calculadora_operacion{
+    color: #ffffff91;
+    font-size: 1.3em;
+    text-align: end;
+    margin-right: 55px;
+    min-height: 20px;
+}
+
+.calculadora_contenedor_output{
+    display: grid;
+    grid-template-rows: 50% 10% 50%;
+    align-items: end;
+    max-height: 150px;
 }
