@@ -47,6 +47,7 @@ for (let i = 0; i < botones.length; i++) {
             case "restar":
             case "multiplicar":
             case "dividir":
+            case "elevar":
                 añadirOperando(event.target.id);
                 break;
             case "resultado":
@@ -62,6 +63,9 @@ for (let i = 0; i < botones.length; i++) {
 }
 
 function añadirOperando(tipoOperacion) {
+    if (operando1 != null) {
+        calcularResultado();
+    }
     operando1 = parseFloat(output.innerHTML);
     operandoOutput.innerText = operando1;
     operacion = tipoOperacion;
@@ -78,35 +82,41 @@ function añadirOperando(tipoOperacion) {
         case "dividir":
             operacionOutput.innerHTML = "/";
             break;
+        case "elevar":
+            operacionOutput.innerHTML = "^"
+            break;
     }
     output.innerHTML = "0";
 }
 
 function calcularResultado() {
-    if (operando1 != null) {
-        switch (operacion){
-            case "sumar":
-                output.innerText = operando1 + parseFloat(output.innerHTML);
-                operandoOutput.innerHTML = "";
-                operacionOutput.innerHTML = "";
-                break;
-            case "restar":
-                output.innerText = operando1 - parseFloat(output.innerHTML);
-                operandoOutput.innerHTML = "";
-                operacionOutput.innerHTML = "";
-                break;
-            case "multiplicar":
-                output.innerText = operando1 * parseFloat(output.innerHTML);
-                operandoOutput.innerHTML = "";
-                operacionOutput.innerHTML = "";
-                break;
-            case "dividir":
-                output.innerText = operando1 / parseFloat(output.innerHTML);
-                operandoOutput.innerHTML = "";
-                operacionOutput.innerHTML = "";
-                break;
-        }
-        operando1 = null;
-        operacion = null;
+    switch (operacion){
+        case "sumar":
+            output.innerText = operando1 + parseFloat(output.innerHTML);
+            operandoOutput.innerHTML = "";
+            operacionOutput.innerHTML = "";
+            break;
+        case "restar":
+            output.innerText = operando1 - parseFloat(output.innerHTML);
+            operandoOutput.innerHTML = "";
+            operacionOutput.innerHTML = "";
+            break;
+        case "multiplicar":
+            output.innerText = operando1 * parseFloat(output.innerHTML);
+            operandoOutput.innerHTML = "";
+            operacionOutput.innerHTML = "";
+            break;
+        case "dividir":
+            output.innerText = operando1 / parseFloat(output.innerHTML);
+            operandoOutput.innerHTML = "";
+            operacionOutput.innerHTML = "";
+            break;
+        case "elevar":
+            output.innerHTML = Math.pow(operando1, parseFloat(output.innerHTML));
+            operandoOutput.innerHTML = "";
+            operacionOutput.innerHTML = "";
+            break;
     }
+    operando1 = null;
+    operacion = null;
 }
